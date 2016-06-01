@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android 101</string>
+    <string name="common_hello_world">Hello World!</string>
+    <string name="txt_hello">Hello</string>
 </resources>
