@@ -74,7 +74,7 @@ public class SayHiActivity extends AppCompatActivity {
     private boolean validateName() {
         if (txtName.getText().toString().trim().isEmpty()) {
             inputLayoutName.setErrorEnabled(true);
-            inputLayoutName.setError(getString(R.string.err_msg_name));
+            inputLayoutName.setError(getString(R.string.error_msg_name));
             requestFocus(txtName);
             return false;
         } else {
@@ -86,7 +86,7 @@ public class SayHiActivity extends AppCompatActivity {
     private boolean validateLastname() {
         if (txtLastname.getText().toString().trim().isEmpty()) {
             inputLayoutName.setErrorEnabled(true);
-            inputLayoutLastname.setError(getString(R.string.err_msg_lastname));
+            inputLayoutLastname.setError(getString(R.string.error_msg_lastname));
             requestFocus(txtLastname);
             return false;
         } else {

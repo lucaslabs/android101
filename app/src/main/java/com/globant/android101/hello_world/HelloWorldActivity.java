@@ -13,6 +13,9 @@ public class HelloWorldActivity extends AppCompatActivity {
     // Views
     private ImageView imgWorld;
 
+    // Attributes
+    private int tapCounter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +34,16 @@ public class HelloWorldActivity extends AppCompatActivity {
         imgWorld.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tapCounter++;
                 showHelloWorldToast();
             }
         });
     }
 
+    // TODO Save tapCounter value/state!!!
+
     private void showHelloWorldToast() {
-        Toast.makeText(HelloWorldActivity.this, R.string.common_hello_world, Toast.LENGTH_LONG).show();
+        String message = String.format(getString(R.string.hello_world_msg), tapCounter);
+        Toast.makeText(HelloWorldActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }
