@@ -3,7 +3,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/btn_hello_world"
@@ -11,5 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_margin_top"
         android:text="@string/common_hello_world" />
+
+    <Button
+        android:id="@+id/btn_say_hi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_say_hi" />
 
 </LinearLayout>
