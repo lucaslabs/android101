@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".hello_world.HelloWorldActivity" />
-        <activity android:name=".say_hi.SayHiActivity"></activity>
+        <activity android:name=".say_hi.SayHiActivity" />
+        <activity android:name=".say_hi.HelloActivity"></activity>
     </application>
 
 </manifest>

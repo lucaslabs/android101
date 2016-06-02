@@ -1,5 +1,6 @@
 package com.globant.android101.say_hi;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,9 +58,17 @@ public class SayHiActivity extends AppCompatActivity {
     }
 
     private void goToHelloActivity() {
-        // TODO-LMN Implement HelloActivity passing name and lastname as a Bundle
-//        Intent intent = new Intent(SayHiActivity.this, HelloActivity.class);
-//        startActivity(intent);
+        // Data from this Activity to be passed as param to next Activity
+        Bundle args = new Bundle();
+        args.putString(HelloActivity.KEY_NAME, txtName.getText().toString());
+        args.putString(HelloActivity.KEY_LASTNAME, txtLastname.getText().toString());
+
+        Intent intent = new Intent(SayHiActivity.this, HelloActivity.class);
+
+        // Add args
+        intent.putExtras(args);
+
+        startActivity(intent);
     }
 
     private boolean validateName() {

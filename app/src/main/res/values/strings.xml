@@ -7,4 +7,5 @@
     <string name="hint_enter_lastname">Enter your lastname</string>
     <string name="err_msg_name">Please enter your name</string>
     <string name="err_msg_lastname">Please enter your lastname</string>
+    <string name="say_hello">Hello %1$s %2$s!</string>
 </resources>
