@@ -20,7 +20,8 @@
         android:id="@+id/input_layout_lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/input_layout_name">
+        android:layout_below="@+id/input_layout_name"
+        android:layout_marginTop="@dimen/common_margin_top">
 
         <EditText
             android:id="@+id/txt_lastname"
@@ -34,5 +35,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/input_layout_lastname"
+        android:layout_marginTop="@dimen/common_margin_top"
         android:text="@string/btn_say_hi" />
 </RelativeLayout>
