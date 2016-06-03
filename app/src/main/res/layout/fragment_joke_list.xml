@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
 
     <!-- TODO Add Swipe-to-Refresh -->
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_jokes"
         android:layout_width="match_parent"

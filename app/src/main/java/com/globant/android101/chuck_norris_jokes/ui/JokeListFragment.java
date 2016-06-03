@@ -14,12 +14,8 @@ import android.widget.Toast;
 
 import com.globant.android101.R;
 import com.globant.android101.chuck_norris_jokes.api.ChuckNorrisJokesApi;
-import com.globant.android101.chuck_norris_jokes.api.Joke;
 import com.globant.android101.chuck_norris_jokes.api.JokeResponse;
 import com.globant.android101.chuck_norris_jokes.ui.adapter.JokeAdapter;
-import com.globant.android101.chuck_norris_jokes.ui.adapter.SimpleDividerItemDecoration;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,13 +71,9 @@ public class JokeListFragment extends Fragment {
     private void bindViews(View view) {
         // Recycler view
         rvJokes = (RecyclerView) view.findViewById(R.id.rv_jokes);
-        rvJokes.setHasFixedSize(true);
 
         // Layout manager
         rvJokes.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        // Item decoration
-        rvJokes.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
 
         // Adapter
         adapter = new JokeAdapter();

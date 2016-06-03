@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/common_margin"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="10dp">
 
-    <TextView
-        android:id="@+id/txt_joke"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin"
-        android:maxLines="5"
-        android:text="Chuck Norris can make a class that is both abstract and final." />
+        android:layout_margin="@dimen/common_margin">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/img_left_quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_left_quote" />
+
+        <TextView
+            android:id="@+id/txt_joke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_left_quote"
+            android:layout_margin="@dimen/common_margin"
+            android:layout_toRightOf="@+id/img_left_quote"
+            android:maxLines="5"
+            android:text="Chuck Norris can make a class that is both abstract and final." />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
