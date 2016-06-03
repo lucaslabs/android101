@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,12 +24,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class JokeListFragment extends Fragment {
+public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     // Constants
     private static final int MAX_JOKES_PER_REQUEST = 15;
 
     // Attributes
+    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView rvJokes;
     private JokeAdapter adapter;
     private ProgressBar progressBar;
@@ -64,11 +66,14 @@ public class JokeListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_joke_list, container, false);
 
         bindViews(view);
+        setListeners();
 
         return view;
     }
 
     private void bindViews(View view) {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+
         // Recycler view
         rvJokes = (RecyclerView) view.findViewById(R.id.rv_jokes);
 
@@ -80,6 +85,10 @@ public class JokeListFragment extends Fragment {
         rvJokes.setAdapter(adapter);
 
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+    }
+
+    private void setListeners() {
+        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
     @Override
@@ -97,7 +106,12 @@ public class JokeListFragment extends Fragment {
         super.onResume();
 
         showProgressBar();
-        getJokes();
+        getJokes(false /* is not refresh*/);
+    }
+
+    @Override
+    public void onRefresh() {
+        getJokes(true /* is refresh*/);
     }
 
     private void showProgressBar() {
@@ -112,28 +126,11 @@ public class JokeListFragment extends Fragment {
         }
     }
 
-    private void getJokes() {
+    private void getJokes(boolean isRefresh) {
         api = createApi();
 
         Call<JokeResponse> call = api.getRandomJokes(MAX_JOKES_PER_REQUEST);
-        call.enqueue(getJokesCallback());
-    }
-
-    @NonNull
-    private Callback<JokeResponse> getJokesCallback() {
-        return new Callback<JokeResponse>() {
-            @Override
-            public void onResponse(Call<JokeResponse> call, Response<JokeResponse> response) {
-                hideProgressBar();
-                adapter.addJokes(response.body().getJokes());
-            }
-
-            @Override
-            public void onFailure(Call<JokeResponse> call, Throwable t) {
-                hideProgressBar();
-                Toast.makeText(getContext(), R.string.error_msg_jokes, Toast.LENGTH_LONG).show();
-            }
-        };
+        call.enqueue(getJokesCallback(isRefresh));
     }
 
     private ChuckNorrisJokesApi createApi() {
@@ -147,6 +144,28 @@ public class JokeListFragment extends Fragment {
         }
         return api;
     }
+
+    @NonNull
+    private Callback<JokeResponse> getJokesCallback(final boolean isRefresh) {
+        return new Callback<JokeResponse>() {
+            @Override
+            public void onResponse(Call<JokeResponse> call, Response<JokeResponse> response) {
+                if (isRefresh) {
+                    swipeRefreshLayout.setRefreshing(false);
+                } else {
+                    hideProgressBar();
+                }
+                adapter.addJokes(response.body().getJokes());
+            }
+
+            @Override
+            public void onFailure(Call<JokeResponse> call, Throwable t) {
+                hideProgressBar();
+                Toast.makeText(getContext(), R.string.error_msg_jokes, Toast.LENGTH_LONG).show();
+            }
+        };
+    }
+
 
     @Override
     public void onDetach() {
