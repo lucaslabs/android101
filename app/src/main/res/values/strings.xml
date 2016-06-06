@@ -9,4 +9,7 @@
     <string name="error_msg_name">Please enter your name</string>
     <string name="error_msg_lastname">Please enter your lastname</string>
     <string name="say_hello">Hello %1$s %2$s!</string>
+    <string name="btn_hey_chuck">Hey Chuck!</string>
+    <string name="error_msg_jokes">Error requesting jokes. Please try again!</string>
+
 </resources>

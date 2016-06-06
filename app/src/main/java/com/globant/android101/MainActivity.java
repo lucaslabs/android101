@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.globant.android101.chuck_norris_jokes.ui.ChuckNorrisJokesActivity;
 import com.globant.android101.hello_world.HelloWorldActivity;
 import com.globant.android101.say_hi.SayHiActivity;
 
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     // Views
     private Button btnHelloWorld;
     private Button btnSayHi;
+    private Button btnHeyChuck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private void bindViews() {
         btnHelloWorld = (Button) findViewById(R.id.btn_hello_world);
         btnSayHi = (Button) findViewById(R.id.btn_say_hi);
+        btnHeyChuck = (Button) findViewById(R.id.btn_hey_chuck);
     }
 
     private void setListeners() {
@@ -45,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 goToSayHiActivity();
             }
         });
+
+        btnHeyChuck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToChuckNorrisJokesActivity();
+            }
+        });
     }
 
     private void goToHelloWorldActivity() {
@@ -56,4 +66,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, SayHiActivity.class);
         startActivity(intent);
     }
+
+    private void goToChuckNorrisJokesActivity() {
+        Intent intent = new Intent(MainActivity.this, ChuckNorrisJokesActivity.class);
+        startActivity(intent);
+    }
+
+    // TODO Refactor to goToActivity(nextActivity) to DRY
 }

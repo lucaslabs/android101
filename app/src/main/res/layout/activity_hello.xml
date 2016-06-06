@@ -7,7 +7,7 @@
         android:id="@+id/txt_hello_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/common_margin_left"
+        android:layout_marginLeft="@dimen/common_margin"
         android:layout_marginTop="@dimen/common_margin_top"
         android:text="@string/say_hello"
         android:textSize="@dimen/common_text_size"
