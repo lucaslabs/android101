@@ -3,6 +3,7 @@ package com.globant.android101.chuck_norris_jokes.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,8 +16,12 @@ import android.widget.Toast;
 
 import com.globant.android101.R;
 import com.globant.android101.chuck_norris_jokes.api.ChuckNorrisJokesApi;
+import com.globant.android101.chuck_norris_jokes.api.Joke;
 import com.globant.android101.chuck_norris_jokes.api.JokeResponse;
 import com.globant.android101.chuck_norris_jokes.ui.adapter.JokeAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,8 +41,9 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
     private ProgressBar progressBar;
 
     private ChuckNorrisJokesApi api;
+    private List<Joke> jokes;
 
-    private OnJokeSelectedListener listener;
+    private OnJokeSelectedListener jokeSelectedListener;
 
     /**
      * Factory method to create and to return a JokeListFragment.
@@ -57,7 +63,24 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnJokeSelectedListener {
-        void onJokeSelected(int postion);
+        void onJokeSelected(Joke joke);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnJokeSelectedListener) {
+            jokeSelectedListener = (OnJokeSelectedListener) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement OnJokeSelectedListener.");
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        jokes = new ArrayList<>();
     }
 
     @Override
@@ -81,7 +104,7 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
         rvJokes.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Adapter
-        adapter = new JokeAdapter();
+        adapter = new JokeAdapter(jokeSelectedListener);
         rvJokes.setAdapter(adapter);
 
         progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
@@ -92,21 +115,15 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnJokeSelectedListener) {
-            listener = (OnJokeSelectedListener) context;
-        } else {
-            throw new ClassCastException(context.toString() + " must implement OnJokeSelectedListener.");
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
 
-        showProgressBar();
-        getJokes(false /* is not refresh*/);
+        if (jokes.isEmpty()) {
+            showProgressBar();
+            getJokes(false /* is not refresh*/);
+        } else {
+            adapter.addJokes(jokes);
+        }
     }
 
     @Override
@@ -155,7 +172,12 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
                 } else {
                     hideProgressBar();
                 }
+
+                jokes.addAll(response.body().getJokes());
                 adapter.addJokes(response.body().getJokes());
+
+                // Scroll to recently added views
+                rvJokes.smoothScrollToPosition(jokes.size() - MAX_JOKES_PER_REQUEST);
             }
 
             @Override
@@ -166,10 +188,9 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
         };
     }
 
-
     @Override
     public void onDetach() {
         super.onDetach();
-        listener = null;
+        jokeSelectedListener = null;
     }
 }

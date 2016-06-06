@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.globant.android101.R;
 import com.globant.android101.chuck_norris_jokes.api.Joke;
+import com.globant.android101.chuck_norris_jokes.ui.JokeListFragment.OnJokeSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,11 @@ import java.util.List;
  */
 public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder> {
 
+    private OnJokeSelectedListener onJokeSelectedListener;
     private List<Joke> jokes;
 
-    public JokeAdapter() {
+    public JokeAdapter(OnJokeSelectedListener onJokeSelectedListener) {
+        this.onJokeSelectedListener = onJokeSelectedListener;
         this.jokes = new ArrayList<>();
     }
 
@@ -32,6 +35,7 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder
     @Override
     public void onBindViewHolder(JokeViewHolder holder, int position) {
         Joke joke = jokes.get(position);
+        holder.selectedJoke = joke;
         holder.txtJoke.setText(joke.getJoke());
     }
 
@@ -45,12 +49,24 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder
         notifyDataSetChanged();
     }
 
+    public List<Joke> getAllJokes() {
+        return jokes;
+    }
+
     public class JokeViewHolder extends RecyclerView.ViewHolder {
         private final TextView txtJoke;
+        private Joke selectedJoke;
 
         public JokeViewHolder(View view) {
             super(view);
             txtJoke = (TextView) view.findViewById(R.id.txt_joke);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onJokeSelectedListener.onJokeSelected(selectedJoke);
+                }
+            });
         }
     }
 }

@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:foreground="@drawable/card_foreground_selector"
     android:layout_margin="@dimen/common_margin"
-    card_view:cardCornerRadius="5dp"
-    card_view:cardElevation="10dp">
+    card_view:cardCornerRadius="@dimen/card_corner_radius"
+    card_view:cardElevation="@dimen/card_elevation">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin">
+        android:layout_margin="@dimen/common_margin" >
 
         <ImageView
             android:id="@+id/img_left_quote"

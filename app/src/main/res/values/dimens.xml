@@ -5,4 +5,6 @@
     <dimen name="common_margin_top">25dp</dimen>
     <dimen name="common_margin">5dp</dimen>
     <dimen name="common_text_size">22sp</dimen>
+    <dimen name="card_corner_radius">5dp</dimen>
+    <dimen name="card_elevation">10dp</dimen>
 </resources>
