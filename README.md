@@ -5,9 +5,9 @@ Android 101 repo to teach how to develop an Android app.
 
 ## Features
 
-1. **Hello World!** sample (see branch  [`hello_world`](https://github.com/lucaslabs/android101/tree/hello_world) and PRs #1 and #3).
-2. **Say Hi** sample (see branch [`say_hi`](https://github.com/lucaslabs/android101/tree/say_hi) and PR #2).
-3. **Chuck Norris Jokes** sample (see branch [`chuck_norris_jokes`](https://github.com/lucaslabs/android101/tree/chuck_norris_jokes) and PR #4).
+1. **Hello World!** sample (see branch  [`hello_world`](https://github.com/lucaslabs/android101/tree/hello_world) and PRs [#1](https://github.com/lucaslabs/android101/pull/1) and [#3](https://github.com/lucaslabs/android101/pull/3)).
+2. **Say Hi** sample (see branch [`say_hi`](https://github.com/lucaslabs/android101/tree/say_hi) and PR [#2](https://github.com/lucaslabs/android101/pull/2)).
+3. **Chuck Norris Jokes** sample (see branch [`chuck_norris_jokes`](https://github.com/lucaslabs/android101/tree/chuck_norris_jokes) and PR [#4](https://github.com/lucaslabs/android101/pull/4)).
 
 ## TODOs
 
