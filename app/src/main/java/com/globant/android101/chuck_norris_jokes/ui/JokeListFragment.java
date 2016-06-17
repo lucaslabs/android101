@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.globant.android101.R;
 import com.globant.android101.chuck_norris_jokes.api.ChuckNorrisJokesApi;
-import com.globant.android101.chuck_norris_jokes.api.Joke;
-import com.globant.android101.chuck_norris_jokes.api.JokeResponse;
+import com.globant.android101.chuck_norris_jokes.api.model.Joke;
+import com.globant.android101.chuck_norris_jokes.api.model.JokeResponse;
 import com.globant.android101.chuck_norris_jokes.ui.adapter.JokeAdapter;
 
 import java.util.ArrayList;

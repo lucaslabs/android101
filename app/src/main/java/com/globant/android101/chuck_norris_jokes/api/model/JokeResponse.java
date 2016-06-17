@@ -1,4 +1,4 @@
-package com.globant.android101.chuck_norris_jokes.api;
+package com.globant.android101.chuck_norris_jokes.api.model;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.globant.android101.R;
-import com.globant.android101.chuck_norris_jokes.api.Joke;
+import com.globant.android101.chuck_norris_jokes.api.model.Joke;
 
 public class JokeDetailFragment extends Fragment {
 

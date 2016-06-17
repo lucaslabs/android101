@@ -1,6 +1,6 @@
 package com.globant.android101.chuck_norris_jokes.api;
 
-import java.util.List;
+import com.globant.android101.chuck_norris_jokes.api.model.JokeResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

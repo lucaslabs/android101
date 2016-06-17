@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.globant.android101.R;
-import com.globant.android101.chuck_norris_jokes.api.Joke;
+import com.globant.android101.chuck_norris_jokes.api.model.Joke;
 
 public class ChuckNorrisJokesActivity extends AppCompatActivity implements JokeListFragment.OnJokeSelectedListener {
 
@@ -31,6 +31,7 @@ public class ChuckNorrisJokesActivity extends AppCompatActivity implements JokeL
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack) {
+        // TODO-LMN Check add instead of replace
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment);

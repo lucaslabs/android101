@@ -1,4 +1,4 @@
-package com.globant.android101.chuck_norris_jokes.api;
+package com.globant.android101.chuck_norris_jokes.api.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

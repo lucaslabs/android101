@@ -16,6 +16,8 @@ public class HelloWorldActivity extends AppCompatActivity {
     // Attributes
     private int tapCounter;
 
+    // TODO-LMN Add other life cycle
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
