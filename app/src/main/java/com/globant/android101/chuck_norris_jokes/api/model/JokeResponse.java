@@ -7,6 +7,8 @@ import java.util.List;
 /**
  * Response for Chuck Norris API.
  * Immutable.
+ *
+ * @author Android team.
  */
 public class JokeResponse {
 

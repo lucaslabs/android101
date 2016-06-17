@@ -8,6 +8,8 @@ import retrofit2.http.Path;
 
 /**
  * Chuck Norris Jokes API.
+ *
+ * @author Android team.
  */
 public interface ChuckNorrisJokesApi {
 

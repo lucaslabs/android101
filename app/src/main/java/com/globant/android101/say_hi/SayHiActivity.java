@@ -11,6 +11,14 @@ import android.widget.EditText;
 
 import com.globant.android101.R;
 
+/**
+ * Second sample of Android 101 app.
+ * The idea is to showcase:
+ * 1. Go to a second Activity using Intent and passing params.
+ * 2. Show the params on the second Activity.
+ *
+ * @author Android team.
+ */
 public class SayHiActivity extends AppCompatActivity {
 
     // Views

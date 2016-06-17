@@ -10,6 +10,15 @@ import com.globant.android101.chuck_norris_jokes.ui.ChuckNorrisJokesActivity;
 import com.globant.android101.hello_world.HelloWorldActivity;
 import com.globant.android101.say_hi.SayHiActivity;
 
+/**
+ * Main Activity of Android 101 app.
+ * The idea is to showcase:
+ * 1. What an Activity is.
+ * 2. XML layouts and how to bind views.
+ * 3. Go to another Activity using Intent.
+ *
+ * @author Android team.
+ */
 public class MainActivity extends AppCompatActivity {
 
     // Views

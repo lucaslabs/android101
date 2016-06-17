@@ -11,6 +11,11 @@ import android.widget.TextView;
 import com.globant.android101.R;
 import com.globant.android101.chuck_norris_jokes.api.model.Joke;
 
+/**
+ * Fragment that shows the selected Chuck Norris joke.
+ *
+ * @author Android team.
+ */
 public class JokeDetailFragment extends Fragment {
 
     private static final String KEY_JOKE = "joke";
@@ -20,6 +25,9 @@ public class JokeDetailFragment extends Fragment {
     public JokeDetailFragment() {
     }
 
+    /**
+     * Factory method to create and to return a JokeDetailFragment.
+     */
     public static JokeDetailFragment newInstance(Joke joke) {
         JokeDetailFragment fragment = new JokeDetailFragment();
         Bundle args = new Bundle();

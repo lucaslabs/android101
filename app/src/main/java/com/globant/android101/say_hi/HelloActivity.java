@@ -6,6 +6,13 @@ import android.widget.TextView;
 
 import com.globant.android101.R;
 
+/**
+ * Second sample of Android 101 app.
+ * The idea is to showcase:
+ * 1. Show received params.
+ *
+ * @author Android team.
+ */
 public class HelloActivity extends AppCompatActivity {
 
     // Constants

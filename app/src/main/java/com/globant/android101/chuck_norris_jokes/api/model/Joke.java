@@ -6,6 +6,8 @@ import android.os.Parcelable;
 /**
  * Model class for a Joke.
  * Immutable.
+ *
+ * @author Android team.
  */
 public class Joke implements Parcelable {
     private final long id;

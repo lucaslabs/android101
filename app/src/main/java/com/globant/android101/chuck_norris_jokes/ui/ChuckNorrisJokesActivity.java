@@ -9,10 +9,16 @@ import android.os.Bundle;
 import com.globant.android101.R;
 import com.globant.android101.chuck_norris_jokes.api.model.Joke;
 
+/**
+ * Third sample of Android 101 app.
+ * The idea is to showcase:
+ * 1. "One Activity to rule them (Fragments) all".
+ * 2. Back stack.
+ * 3. Master / Detail flow.
+ *
+ * @author Android team.
+ */
 public class ChuckNorrisJokesActivity extends AppCompatActivity implements JokeListFragment.OnJokeSelectedListener {
-
-
-    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,22 +27,21 @@ public class ChuckNorrisJokesActivity extends AppCompatActivity implements JokeL
         setContentView(R.layout.activity_chuck_norris_jokes);
 
         if (savedInstanceState == null) {
-            replaceFragment(JokeListFragment.newInstance(), false /* add to backstack */);
+            replaceFragment(JokeListFragment.newInstance(), false /* add to back stack */);
         }
     }
 
     @Override
     public void onJokeSelected(Joke joke) {
-        replaceFragment(JokeDetailFragment.newInstance(joke), true /* add to backstack */);
+        replaceFragment(JokeDetailFragment.newInstance(joke), true /* add to backs tack */);
     }
 
     private void replaceFragment(Fragment fragment, boolean addToBackStack) {
-        // TODO-LMN Check add instead of replace
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment);
         if (addToBackStack) {
-            transaction.addToBackStack(null);
+            transaction.addToBackStack(null /* optional name for this back stack state */);
         }
         transaction.commit();
     }

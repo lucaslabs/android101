@@ -15,6 +15,8 @@ import java.util.List;
 
 /**
  * Adapter to show and to recycle Joke views.
+ *
+ * @author Android team.
  */
 public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder> {
 

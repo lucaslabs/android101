@@ -29,6 +29,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Fragment that shows a list of Chuck Norris jokes.
+ * The idea is to showcase:
+ * 1. Fragment lifecycle.
+ * 2. Recycling views.
+ * 3. Swipe-to-Refresh.
+ * 4. Networking: calling a REST service/API.
+ *
+ * @author Android team.
+ */
 public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     // Constants
