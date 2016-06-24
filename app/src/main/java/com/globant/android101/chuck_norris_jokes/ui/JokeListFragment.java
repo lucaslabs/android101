@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     // Constants
+    private static final String TAG = JokeListFragment.class.getSimpleName();
     private static final int MAX_JOKES_PER_REQUEST = 15;
 
     // Attributes
@@ -51,7 +53,6 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
     private ProgressBar progressBar;
 
     private ChuckNorrisJokesApi api;
-    private List<Joke> jokes;
 
     private OnJokeSelectedListener jokeSelectedListener;
 
@@ -89,8 +90,7 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        jokes = new ArrayList<>();
+        Log.d(TAG, "onCreate");
     }
 
     @Override
@@ -128,12 +128,10 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void onResume() {
         super.onResume();
 
-        if (jokes.isEmpty()) {
-            showProgressBar();
-            getJokes(false /* is not refresh*/);
-        } else {
-            adapter.addJokes(jokes);
-        }
+        showProgressBar();
+        getJokes(false /* is not refresh*/);
+
+        // TODO Save jokes state and show them on orientation change.
     }
 
     @Override
@@ -183,11 +181,10 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
                     hideProgressBar();
                 }
 
-                jokes.addAll(response.body().getJokes());
                 adapter.addJokes(response.body().getJokes());
 
                 // Scroll to recently added views
-                rvJokes.smoothScrollToPosition(jokes.size() - MAX_JOKES_PER_REQUEST);
+                rvJokes.smoothScrollToPosition(adapter.getItemCount() - MAX_JOKES_PER_REQUEST);
             }
 
             @Override

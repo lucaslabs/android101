@@ -12,4 +12,5 @@ Android 101 repo to teach how to develop an Android app.
 ## TODOs
 
 1. Save and restore variable state of **Hello World!** sample (see [Recreating an Activity](https://developer.android.com/training/basics/activity-lifecycle/recreating.html)).
+2. Save and restore variable state of **Chuck Norris Jokes** sample (see [Fragments](https://developer.android.com/guide/components/fragments.html)).
 2. Support landscape devices (tablets) on **Chuck Norris Jokes** sample (see [Building a Flexible UI](https://developer.android.com/training/basics/fragments/fragment-ui.html)).
