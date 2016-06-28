@@ -37,6 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 2. Recycling views.
  * 3. Swipe-to-Refresh.
  * 4. Networking: calling a REST service/API.
+ * 5. Main/UI thread
  *
  * @author Android team.
  */
@@ -158,6 +159,7 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
         call.enqueue(getJokesCallback(isRefresh));
     }
 
+    // Single creation
     private ChuckNorrisJokesApi createApi() {
         if (api == null) {
             Retrofit retrofit = new Retrofit.Builder()
@@ -165,7 +167,7 @@ public class JokeListFragment extends Fragment implements SwipeRefreshLayout.OnR
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            return retrofit.create(ChuckNorrisJokesApi.class);
+            api = retrofit.create(ChuckNorrisJokesApi.class);
         }
         return api;
     }
